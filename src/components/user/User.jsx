@@ -69,19 +69,21 @@ const User = ({lavel = 'New User'}) =>{
           onChange={e=>changeInput("lastName", e.target.value)} 
       />
     </Form.Group>
+
     <Form.Group controlId="gender">
     <Form.Label>Gender</Form.Label>
-      
-      <Select options={options} value={gender} onChange={e=>setGender(e.target.value)}/>
-      {/* <Select 
-          options={options} 
-          isClearable={true} 
-          value={gender} 
-          onChange={e=>changeInput("gender", e.target.value)}/> */}
+      <Select 
+      options={options} 
+      isClearable={true} 
+      onChange={value=>changeInput("gender", value) }/>
     </Form.Group>
+
     <Form.Group controlId="dateOfBirth">
       <Form.Label>Date of Birth</Form.Label>
-      <Form.Control type="date" placeholder="Enter your date of birth" value={dateOfBirth} onChange={e=>setDateOfBirth(e.target.value)} />
+      <Form.Control type="date" 
+      placeholder="Enter your date of birth"
+      value={dateOfBirth} 
+      onChange={e=>changeInput("dateOfBirth", e.target.value)} />
     </Form.Group>
     <Form.Group controlId="cityName">
       <Form.Label>City Name</Form.Label>
@@ -94,12 +96,14 @@ const User = ({lavel = 'New User'}) =>{
 
     <Form.Group controlId="phoneNumber">
       <Form.Label>Phone</Form.Label>
-      <Form.Control type="number" placeholder="+8801" value={phoneNumber} onChange={e=>setPhoneNumber(e.target.value)}/>
-    </Form.Group>
+      <Form.Control type="number" placeholder="+8801" value={phoneNumber} 
+      onChange={e=>changeInput("phoneNumber", e.target.value)} />
+      </Form.Group>
 
     <Form.Group  controlId="emailAddress">
       <Form.Label>Email</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" value={emailAddress} onChange={e=>setEmailAddress(e.target.value)}/>
+      <Form.Control type="email" placeholder="Enter email" value={emailAddress} 
+           onChange={e=>changeInput("emailAddress", e.target.value)} />
     </Form.Group>
   <Button variant="primary" type="submit">
     Submit
