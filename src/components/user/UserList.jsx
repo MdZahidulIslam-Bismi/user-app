@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
+import './user.css'
+import { Button } from 'react-bootstrap';
 function UserList({userList}) {
     const [users, setUsers] = useState([]);
 
@@ -11,7 +12,7 @@ function UserList({userList}) {
             }
         } catch (err) {
             console.log(err);
-        }
+        }   
     }
     useEffect(() => {
         getUsersArray();
@@ -19,8 +20,8 @@ function UserList({userList}) {
 
     return (
         <div>
-            <h1>Users list</h1>
-            <button onClick={() => getUsersArray()}>Update Data</button>
+            <h3>Users list</h3>
+            <Button variant="info" size="xxl" onClick={() => getUsersArray()}>Update Data</Button>
             <table id="example" class="table table-striped table-bordered" >
         <thead>
             <tr>
@@ -36,17 +37,17 @@ function UserList({userList}) {
             {
                 users.length
                 ? users.map((user, index) => (
-                    <div key={index}>   
+                    <tr key={index}>   
                                            
-            <tr class="table row-striped row-bordered">
+          
                 <td>{user.firstName} {user.lastName}</td>
                 <td>{user.gender.value}</td>
                 <td> {user.date}</td>
                 <td>{user.cityName}</td>
                 <td>{user.phoneNumber}</td>
                 <td>{user.email}</td>
+            
             </tr>
-            </div>
                 ))
                 : <p>User list is empty. Create new user and click refresh to view all users list</p>
             }

@@ -13,7 +13,6 @@ const User = ({ lavel = 'New User', setUserList }) => {
     { value: 'Female', label: 'Female' },
     { value: 'Others', label: 'Others' },
   ]
-
   const onSubmitUserForm = (data) => {
      console.log(data)
     const usersArray = JSON.parse(window.localStorage.getItem('users'));
@@ -145,13 +144,12 @@ const User = ({ lavel = 'New User', setUserList }) => {
             errors.email &&
             <span className="text-danger">
               {errors.email.type === 'required' && 'Please enter your email'}
-              {errors.email.type === 'minLength' && 'Please give First Name minimum of 2 characters'}
-              {errors.email.type === 'maxLength' && 'Please give First Name maximum of 50 characters'}
+              {errors.email.type === 'pattern' && 'Valid mail please'}
             </span>
           }
 
-        </Form.Group>
-        <Button variant="primary" type="submit">
+        </Form.Group >
+        <Button variant="primary" size="xxl" type="submit">
           Submit
         </Button>
       </Form>
