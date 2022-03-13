@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function UserList() {
+function UserList({userList}) {
     const [users, setUsers] = useState([]);
 
     const getUsersArray = () => {
@@ -15,35 +15,13 @@ function UserList() {
     }
     useEffect(() => {
         getUsersArray();
-    }, [])
+    }, [userList]);
+
     return (
         <div>
             <h1>Users list</h1>
-            <button onClick={() => getUsersArray()}>Refresh</button>
-            {
-                users.length
-                ? users.map((user, index) => (
-                    <div key={index}>
-                         {/* <li>
-                            {user.firstName} {user.lastName}
-                        </li>
-                        <li>
-                            {user.gender}
-                        </li> 
-                        <li>
-                            {user.date}
-                        </li>
-                        <li>
-                            {user.cityName}
-                        </li>
-                        <li>
-                            {user.phoneNumber}
-                        </li>
-                        <li>
-                            {user.email}
-                        </li> */}
-                         
-    <table id="example" class="table table-striped table-bordered" >
+            <button onClick={() => getUsersArray()}>Update Data</button>
+            <table id="example" class="table table-striped table-bordered" >
         <thead>
             <tr>
                 <th>Name</th>
@@ -54,10 +32,18 @@ function UserList() {
                 <th>Email</th>
             </tr>
         </thead>
+    </table>
+            {
+                users.length
+                ? users.map((user, index) => (
+                    <div key={index}>
+                      
+                         
+    <table id="example" class="table table-striped table-bordered" >
         <tbody>
             <tr>
-                <td>  {user.firstName} {user.lastName}</td>
-                <td></td>
+                <td> {user.firstName} {user.lastName}</td>
+                <td>{user.gender.value}</td>
                 <td>  {user.date}</td>
                 <td>{user.cityName}</td>
                 <td>{user.phoneNumber}</td>

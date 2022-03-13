@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import Select from 'react-select';
 import { Controller, useForm } from "react-hook-form";
 
-const User = ({ lavel = 'New User' }) => {
+const User = ({ lavel = 'New User', setUserList }) => {
 
   const { register, handleSubmit, watch, control, formState: { errors } } = useForm();
 
@@ -20,9 +20,11 @@ const User = ({ lavel = 'New User' }) => {
 
     if (usersArray && Array.isArray(usersArray)) {
       usersArray.push(data);
-      window.localStorage.setItem('users', JSON.stringify(usersArray))
+      window.localStorage.setItem('users', JSON.stringify(usersArray));
+      setUserList(usersArray);
     }else{
-      window.localStorage.setItem('users', JSON.stringify([data]))
+      window.localStorage.setItem('users', JSON.stringify([data]));
+      setUserList([data]);
     }
   }
 
@@ -81,6 +83,7 @@ const User = ({ lavel = 'New User' }) => {
           <Controller
             control={control}
             name="gender"
+            rules={{ required: true }}
             render={({ field: { onChange, value, name, ref } }) => (
               <Select
                 inputRef={ref}
