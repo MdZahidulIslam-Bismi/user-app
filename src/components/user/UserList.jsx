@@ -32,32 +32,27 @@ function UserList({userList}) {
                 <th>Email</th>
             </tr>
         </thead>
-    </table>
+        <tbody>
             {
                 users.length
                 ? users.map((user, index) => (
-                    <div key={index}>
-                      
-                         
-    <table id="example" class="table table-striped table-bordered" >
-        <tbody>
-            <tr>
-                <td> {user.firstName} {user.lastName}</td>
+                    <div key={index}>   
+                                           
+            <tr class="table row-striped row-bordered">
+                <td>{user.firstName} {user.lastName}</td>
                 <td>{user.gender.value}</td>
-                <td>  {user.date}</td>
+                <td> {user.date}</td>
                 <td>{user.cityName}</td>
                 <td>{user.phoneNumber}</td>
                 <td>{user.email}</td>
             </tr>
-        </tbody>
-        <tfoot>
-           
-        </tfoot>
-    </table>
-</div>
+            </div>
                 ))
                 : <p>User list is empty. Create new user and click refresh to view all users list</p>
             }
+            </tbody>
+    </table>
+
         </div>
     )
 }
